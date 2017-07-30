@@ -1,0 +1,27 @@
+{
+  "name": "poetry-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rwylie/poetry-app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rwylie/poetry-app/issues"
+  },
+  "homepage": "https://github.com/rwylie/poetry-app#readme",
+  "dependencies": {
+    "bluebird": "^3.5.0",
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "hbs": "^4.0.1",
+    "nodemon": "^1.11.0",
+    "pg-promise": "^6.3.6"
+  }
+}
