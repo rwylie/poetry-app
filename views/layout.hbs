@@ -5,23 +5,28 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Import materialize.css-->
     <link type="text/css" rel="stylesheet" href="/static/css/materialize.min.css">
+    <link type="text/css" rel="stylesheet" href="/static/css/main.css">
 
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   </head>
 
-  <body>
+  <body style="background-image: url("/static/images/cats2.png");">
     <!-- Navbar -->
-    <nav>
-    <div class="nav-wrapper green accent-1">
-      <a href="/"><img src="/static/images/logo5.png"></a>
-      <ul class="right hide-on-med-and-down">
-        <li><a href="" class="white-text">Tutorial</a></li>
-        <li><a href="/create/" class="white-text" >Create</a></li>
-        <li class="active"><a href="collapsible.html" class="white-text">About</a></li>
-      </ul>
-    </div>
-  </nav>
+    <div class="navbar-fixed">
+      <nav>
+      <div class="nav-wrapper green accent-1">
+        <a href="/"><img src="/static/images/logo6.png"></a>
+        <ul class="right hide-on-med-and-down">
+          <li><a href="/tutorial/" class="white-text">Tutorial</a></li>
+          <li><a href="/create/" class="white-text" >Create</a></li>
+          <li><a href="/about/" class="white-text">About</a></li>
+          <li><a href="/login/" class="white-text">Login</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
 
 {{{body}}}
 
@@ -56,5 +61,6 @@
     <!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="/static/js/materialize.min.js"></script>
+    <script type="text/javascript" src="/static/js/frontend.js"></script>
   </body>
 </html>

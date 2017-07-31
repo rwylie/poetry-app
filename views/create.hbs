@@ -1,15 +1,47 @@
 
 <div class="container">
-  <h3 class="deep-orange-text accent-2">Create a Poem</h3>
+  <div class="row">
+    <div class="col s4">
+      <h3 class="deep-orange-text accent-2">Create a Poem</h3>
+    </div>
+
+    <div class="col s4">
+    <!--  name is needed to talk to backend, for is to connect id, don't forget on form you need a get and action-->
+    <!-- <form action="/api" method="get"> -->
+    <!-- <form> -->
+      <div class="amber-text accent-3">
+        Word Search:
+        <div class="input-field inline">
+          <input placeholder="Enter a Word" id="word" name="word" type="text">
+        </div>
+        <button class="btn waves-effect waves-light deep-orange accent 2" onclick="getSynonyms()"> Synonyns
+        </button>
+        <button class="btn waves-effect waves-light amber accent-2" onclick="getRhymes()"> Rhymes
+        </button>
+      </div>
+    <!-- </form> -->
+  </div>
+  <div class="col s4">
+    <div id="wordsShowHere">
+    </div>
+  </div>
+
+</div>
+
+
+  <!-- <img src="/static/images/cats4.jpg"> -->
   <div class="row">
       <form class="col s12">
         <div class="row">
-        <div class="col s12">
+        <div class="col s4 amber-text accent-3">
           Poem by:
           <div class="input-field inline">
             <input placeholder="Name" id="first_name" type="text" class="validate">
             <label for="first_name"></label>
           </div>
+        </div>
+
+        <div class="col s4">
         </div>
       </div>
         <div class="row">
@@ -37,17 +69,37 @@
           </div>
         </div>
         <div class="row">
-          <div class="col s4">
-            <a class="waves-effect waves-light deep-orange accent-2 btn"><i class="material-icons left">print</i>Print</a>
-          </div>
-          <div class="input-field col s4 deep-orange-text accent-2">
-            Word Search:
-            <div class="input-field inline">
-              <input id="search" type="text">
-              <label for="search"></label>
-            </div>
+          <div class="col s6">
+            <a class="waves-effect waves-yellow amber accent-2 btn"><i class="material-icons left">save</i>Save</a>
+            <a class="waves-effect waves-yellow deep-orange accent-2 btn"><i class="material-icons left">print</i>Print</a>
           </div>
         </div>
       </div>
     </form>
   </div>
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+  <script>
+function getSynonyms() {
+  var word = document.getElementById("word").value;
+  document.getElementById("wordsShowHere").innerHTML = "loading";
+
+  axios.get('http://words.bighugelabs.com/api/2/'+"{{key}}"+'/'+word+'/json')
+  .then(function (r) {
+    console.log(r);
+    document.getElementById("wordsShowHere").innerHTML = r.data.noun;
+  })
+}
+function getRhymes() {
+  var word = document.getElementById("word").value;
+  document.getElementById("wordsShowHere").innerHTML = "loading";
+
+  axios.get('http://words.bighugelabs.com/api/2/'+"{{key}}"+'/'+word+'/json')
+  .then(function (r) {
+    console.log(r);
+    document.getElementById("wordsShowHere").innerHTML = r.data.noun;
+  })
+}
+
+  </script>
