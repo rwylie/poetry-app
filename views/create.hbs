@@ -16,15 +16,21 @@
         </div>
         <button class="btn waves-effect waves-light deep-orange accent 2" onclick="getSynonyms()"> Synonyns
         </button>
-        <button class="btn waves-effect waves-light amber accent-2" onclick="getRhymes()"> Rhymes
+        <button class="btn waves-effect waves-light amber accent-2" onclick="getAntonyms()"> Antonyns
         </button>
       </div>
     <!-- </form> -->
   </div>
-  <div class="col s4">
-    <div id="wordsShowHere">
+
+    <div class="col s4 green-text accent-1">
+      <h5>
+        <div id="nouns"></div>
+        <div id="nounsHere"></div>
+        <div id="adjectives"></div>
+        <div id="adjectivesHere">
+        </div>
+      </h5>
     </div>
-  </div>
 
 </div>
 
@@ -83,22 +89,58 @@
   <script>
 function getSynonyms() {
   var word = document.getElementById("word").value;
-  document.getElementById("wordsShowHere").innerHTML = "loading";
 
   axios.get('http://words.bighugelabs.com/api/2/'+"{{key}}"+'/'+word+'/json')
   .then(function (r) {
     console.log(r);
-    document.getElementById("wordsShowHere").innerHTML = r.data.noun;
+    if (r.data.noun){
+      if (r.data.noun.syn) {
+        document.getElementById("nouns").innerHTML = "Nouns: ";
+        document.getElementById("nounsHere").innerHTML = r.data.noun.syn;
+        }
+      }
+    else {
+      document.getElementById("nouns").innerHTML = "Nouns: ";
+      document.getElementById("nounsHere").innerHTML = "No matches";
+    }
+    if (r.data.adjective){
+      if (r.data.adjective.syn) {
+        document.getElementById("adjectives").innerHTML = "Adjectives: ";
+        document.getElementById("adjectivesHere").innerHTML = r.data.adjective.syn;
+        }
+      }
+    else {
+      document.getElementById("adjectives").innerHTML = "Adjectives: ";
+      document.getElementById("adjectivesHere").innerHTML = "No matches";
+    }
   })
 }
-function getRhymes() {
+function getAntonyms() {
   var word = document.getElementById("word").value;
-  document.getElementById("wordsShowHere").innerHTML = "loading";
 
   axios.get('http://words.bighugelabs.com/api/2/'+"{{key}}"+'/'+word+'/json')
   .then(function (r) {
     console.log(r);
-    document.getElementById("wordsShowHere").innerHTML = r.data.noun;
+    if (r.data.noun){
+      if (r.data.noun.ant) {
+        document.getElementById("nouns").innerHTML = "Nouns: ";
+        document.getElementById("nounsHere").innerHTML = r.data.noun.ant;
+        }
+      }
+    else {
+      document.getElementById("nouns").innerHTML = "Nouns: ";
+      document.getElementById("nounsHere").innerHTML = "No matches";
+    }
+    if (r.data.adjective){
+      if (r.data.adjective.ant) {
+        document.getElementById("adjectives").innerHTML = "Adjectives: ";
+        document.getElementById("adjectivesHere").innerHTML = r.data.adjective.ant;
+        }
+      }
+    else {
+      document.getElementById("adjectives").innerHTML = "Adjectives: ";
+      document.getElementById("adjectivesHere").innerHTML = "No matches";
+    }
   })
 }
 
