@@ -1,15 +1,17 @@
-<div class="row">
-  <div class="col s12 center">
-    <h3> My Poems</h3>
-    <form action="/poem" method="GET">
-    <ul>
-      {{#each poems}}
-      <li>
-        <button class="btn" type="submit" name="poem" value="{{id}}"> {{name}}</button> <br><br>
+<div class="container">
+  <div class="row">
+    <div class="col s12 center">
+      <h3> My Poems</h3>
+      <form action="/poem" method="GET">
+      <ul>
+        {{#each poems}}
+        <li>
+          <button class="btn" type="submit" name="poem" value="{{id}}"> {{name}}</button> <br><br>
 
-      </li>
-      {{/each}}
-    </ul>
-  </form>
+        </li>
+        {{/each}}
+      </ul>
+    </form>
+    </div>
   </div>
 </div>

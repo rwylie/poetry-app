@@ -81,9 +81,10 @@ app.get('/poem', function(req, res, next) {
   var id = req.query.poem;
   console.log(id);
 
-  db.any(`SELECT poem FROM poems WHERE id = '${id}'`)
-  .then(function(poem) {
-  res.render('poem.hbs', {'poem': poem});
+  db.one(`SELECT * FROM poems WHERE id = '${id}'`)
+  .then(function(p) {
+    console.log(p);
+  res.render('poem.hbs', {'p': p});
   })
   .catch(next);
 });
