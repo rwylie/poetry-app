@@ -5,6 +5,7 @@ function auth () {
     firebase.auth().signInWithPopup(provider)
       .then(function (result) {
         User.user = result.user;
+        $.post( "/save_uid", {uid: result.user.uid});
         resolve(User);
       })
       .catch(function (e) {
@@ -18,6 +19,7 @@ firebase.auth()
     if (user) {
       User.user = user;
       console.log(user);
+      $.post( "/save_uid", {uid: user.uid});
       document.getElementById('loggedout').innerHTML =  User.user.displayName + " is a poetic genius!";
       poemBy();
     }

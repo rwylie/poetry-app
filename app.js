@@ -5,6 +5,7 @@ var apicache = require('apicache');
 var cache = apicache.middleware;
 var axios = require('axios');
 var promise = require('bluebird');
+var session = require('express-session');
 var pgp = require('pg-promise')({
   promiseLib: Promise
 });
@@ -17,6 +18,12 @@ var db = pgp(process.env.DATABASE_URL || {
 });
 
 app.use(bodyParser.urlencoded({extended: false}));
+app.use(session({
+  secret: process.env.SECRET_KEY || 'dev',
+  resave: true,
+  saveUninitialized: false,
+  cookie: {maxAge: 900000}
+}));
 
 app.set('view engine', 'hbs');
 app.use('/static', express.static('public'));
@@ -43,6 +50,7 @@ app.get('/about/', function(req, res) {
 app.post('/add_poem', function (req, res, next) {
   var poem = req.body.createPoem1 + "\n" + req.body.createPoem2 + "\n" + req.body.createPoem3 + "\n" + req.body.createPoem4;
   var user_id = req.body.uid;
+  req.session.uid = user_id;
   db.none(`INSERT INTO Poems VALUES (default, '${poem}', '${user_id}')`)
     .then(function() {
       res.redirect('/saved');
@@ -50,10 +58,19 @@ app.post('/add_poem', function (req, res, next) {
     .catch(next);
 });
 
+app.post('/save_uid', function(req, res){
+  var user_id = req.body.uid;
+  req.session.uid = user_id;
+  console.log('SAVED UID', req.session.uid);
+  res.json({status : "OK"})
+});
+
 app.get('/mypoems', function(req,res, next) {
-  // var id = req.body.uid;
-  // db.any(`SELECT * FROM poems WHERE user_id = '${id}'`)
-  db.any(`SELECT * FROM poems`)
+  var id = req.session.uid;
+  console.log('UID', id);
+
+  db.any(`SELECT * FROM poems WHERE user_id = '${id}'`)
+  // db.any(`SELECT * FROM poems`)
   .then(function(poems) {
     res.render('mypoems.hbs', {'poems': poems});
   })
@@ -61,9 +78,15 @@ app.get('/mypoems', function(req,res, next) {
 });
 
 app.get('/poem', function(req, res, next) {
-  var poem = req.body.name;
-  console.log(poem);
-})
+  var id = req.query.poem;
+  console.log(id);
+
+  db.any(`SELECT poem FROM poems WHERE id = '${id}'`)
+  .then(function(poem) {
+  res.render('poem.hbs', {'poem': poem});
+  })
+  .catch(next);
+});
 
 app.get('/saved', function( req, res, next) {
   res.render('saved.hbs');
