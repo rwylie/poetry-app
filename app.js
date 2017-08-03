@@ -50,14 +50,25 @@ app.post('/add_poem', function (req, res, next) {
     .catch(next);
 });
 
-app.get('/display_poems', function(req,res, next) {
-  var user_id = req.body.uid;
-  db.any('SELECT * FROM poems WHERE user_id = $1', user_id);
+app.get('/mypoems', function(req,res, next) {
+  // var id = req.body.uid;
+  // db.any(`SELECT * FROM poems WHERE user_id = '${id}'`)
+  db.any(`SELECT * FROM poems`)
+  .then(function(poems) {
+    res.render('mypoems.hbs', {'poems': poems});
+  })
+  .catch(next);
 });
+
+app.get('/poem', function(req, res, next) {
+  var poem = req.body.name;
+  console.log(poem);
+})
 
 app.get('/saved', function( req, res, next) {
   res.render('saved.hbs');
 });
+
 
 var PORT = process.env.PORT || 9090;
 app.listen(PORT, function () {
