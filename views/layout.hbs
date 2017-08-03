@@ -19,9 +19,9 @@
         <a href="/"><img src="/static/images/logo6.png"></a>
         <ul class="right hide-on-med-and-down">
           <li><a href="/tutorial/" class="white-text">Tutorial</a></li>
-          <li><a href="/create/" class="white-text" >Create</a></li>
+          <li><a href="/create/" class="white-text" onclick="poemBy()">Create</a></li>
           <li><a href="/about/" class="white-text">About</a></li>
-          <li><a href="/login/" class="white-text">Login</a></li>
+          <li><a href="javascript: void(0);"  onclick="auth()" class="white-text">Login</a></li>
         </ul>
       </div>
     </nav>
@@ -53,13 +53,27 @@
             <div class="container">
             © 2017 Poetic Play
 
-            <form action="/logout" method="GET"><button class="white-text green accent-1 right btn-flat" name="logout" type="submit">Logout</button></form>
+          <button class="white-text green accent-1 right btn-flat" onclick="logout(), loggedOut()">Logout</button> <br><br>
+          <p id="loggedout" class="white-text center"></p>
 
             </div>
           </div>
         </footer>
 
 
+    <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyDmHw5tmejf8lLcNonkQURS36ZKFyYhPvI",
+        authDomain: "poeticplay-6ad97.firebaseapp.com",
+        databaseURL: "https://poeticplay-6ad97.firebaseio.com",
+        projectId: "poeticplay-6ad97",
+        storageBucket: "",
+        messagingSenderId: "593313669273"
+      };
+      firebase.initializeApp(config);
+    </script>
     <!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="/static/js/materialize.min.js"></script>
