@@ -48,10 +48,11 @@ app.get('/about/', function(req, res) {
 /**********POEMS***********/
 
 app.post('/add_poem', function (req, res, next) {
-  var poem = req.body.createPoem1 + "\n" + req.body.createPoem2 + "\n" + req.body.createPoem3 + "\n" + req.body.createPoem4;
+  var poem = req.body.createPoem1 + "*" + req.body.createPoem2 + "*" + req.body.createPoem3 + "*" + req.body.createPoem4;
   var user_id = req.body.uid;
   req.session.uid = user_id;
-  db.none(`INSERT INTO Poems VALUES (default, '${poem}', '${user_id}')`)
+  var title = req.body.title;
+  db.none(`INSERT INTO Poems VALUES (default, '${poem}', '${user_id}', '${title}')`)
     .then(function() {
       res.redirect('/saved');
     })
