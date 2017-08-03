@@ -38,6 +38,8 @@ app.get('/about/', function(req, res) {
   res.render('about.hbs');
 });
 
+/**********POEMS***********/
+
 app.post('/add_poem', function (req, res, next) {
   var poem = req.body.createPoem1 + "\n" + req.body.createPoem2 + "\n" + req.body.createPoem3 + "\n" + req.body.createPoem4;
   var user_id = req.body.uid;
@@ -51,7 +53,11 @@ app.post('/add_poem', function (req, res, next) {
 app.get('/display_poems', function(req,res, next) {
   var user_id = req.body.uid;
   db.any('SELECT * FROM poems WHERE user_id = $1', user_id);
-})
+});
+
+app.get('/saved', function( req, res, next) {
+  res.render('saved.hbs');
+});
 
 var PORT = process.env.PORT || 9090;
 app.listen(PORT, function () {
