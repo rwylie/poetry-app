@@ -48,11 +48,11 @@ app.get('/about/', function(req, res) {
 /**********POEMS***********/
 
 app.post('/add_poem', function (req, res, next) {
-  var poem = req.body.createPoem1 + "*" + req.body.createPoem2 + "*" + req.body.createPoem3 + "*" + req.body.createPoem4;
+  var poem = req.body.createPoem1 + "\n" + req.body.createPoem2 + "\n" + req.body.createPoem3 + "\n" + req.body.createPoem4;
   var user_id = req.body.uid;
   req.session.uid = user_id;
   var title = req.body.title;
-  db.none(`INSERT INTO Poems VALUES (default, '${poem}', '${user_id}', '${title}')`)
+  db.none('INSERT INTO Poems VALUES (default, $1, $2, $3)', [poem, user_id, title])
     .then(function() {
       res.redirect('/saved');
     })
@@ -70,7 +70,7 @@ app.get('/mypoems', function(req,res, next) {
   var id = req.session.uid;
   console.log('UID', id);
 
-  db.any(`SELECT * FROM poems WHERE user_id = '${id}'`)
+  db.any('SELECT * FROM poems WHERE user_id = $1', id)
   // db.any(`SELECT * FROM poems`)
   .then(function(poems) {
     res.render('mypoems.hbs', {'poems': poems});
@@ -84,8 +84,9 @@ app.get('/poem', function(req, res, next) {
 
   db.one(`SELECT * FROM poems WHERE id = '${id}'`)
   .then(function(p) {
-    console.log(p);
-  res.render('poem.hbs', {'p': p});
+    console.log(p.poem);
+    var poemSplit = p.poem.split('\n');
+    res.render('poem.hbs', {'poem': poemSplit, name: p.name});
   })
   .catch(next);
 });
