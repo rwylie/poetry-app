@@ -1,24 +1,25 @@
 
+<img src="/static/images/background2.png">
 <div class="container">
   <div class="row">
     <div class="col s4">
-      <h3 class="deep-orange-text accent-2">Create a Poem</h3>
+      <h3 style="color: #ffab91"> Create a Poem </h3>
     </div>
 
     <div class="col s4">
-      <div class="amber-text accent-3">
+      <div class="blue-grey-text lighten-3">
         Word Search:
         <div class="input-field inline">
           <input placeholder="Enter a Word" id="word" name="word" type="text">
         </div>
-        <button class="btn waves-effect waves-light deep-orange accent 2" onclick="getSynonyms()"> Synonyns
+        <button class="btn waves-effect waves-light deep-orange lighten-3" onclick="getSynonyms()"> Synonyns
         </button>
-        <button class="btn waves-effect waves-light amber accent-2" onclick="getAntonyms()"> Antonyns
+        <button class="btn waves-effect waves-light brown lighten-3" onclick="getAntonyms()"> Antonyns
         </button>
       </div>
   </div>
 
-    <div class="col s4 green-text accent-1">
+    <div class="col s4 blue-grey-text lighten-3">
       <h5>
         <div id="nouns"></div>
         <div id="nounsHere"></div>
@@ -36,7 +37,7 @@
       <form action="/add_poem" method="POST" class="col s12">
         <input name="uid" value="" id="uid" type="hidden">
         <div class="row">
-        <div class="col s4 amber-text accent-3">
+        <div class="col s4 blue-grey-text lighten-3">
           <p>Poem by: </p><p id="poem-by"></p>
         </div>
 
@@ -72,8 +73,8 @@
         </div>
         <div class="row">
           <div class="col s6">
-            <button class="waves-effect waves-yellow amber accent-2 btn" type="submit"><i class="material-icons left">save</i>Save</button>
-            <button class="waves-effect waves-yellow deep-orange accent-2 btn"><i class="material-icons left">print</i>Print</a>
+            <button class="waves-effect waves-yellow green lighten-3 btn" type="submit"><i class="material-icons left">save</i>Save</button>
+            <button class="waves-effect waves-yellow deep-orange lighten-3 btn"><i class="material-icons left">print</i>Print</a>
           </div>
         </div>
       </div>

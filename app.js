@@ -47,26 +47,39 @@ app.get('/about/', function(req, res) {
 
 /**********POEMS***********/
 
-app.post('/add_poem', function (req, res, next) {
+app.post('/add_poem/', function (req, res, next) {
   var poem = req.body.createPoem1 + "\n" + req.body.createPoem2 + "\n" + req.body.createPoem3 + "\n" + req.body.createPoem4;
   var user_id = req.body.uid;
   req.session.uid = user_id;
   var title = req.body.title;
   db.none('INSERT INTO Poems VALUES (default, $1, $2, $3)', [poem, user_id, title])
     .then(function() {
-      res.redirect('/saved');
+      res.redirect('/saved/');
     })
     .catch(next);
 });
 
-app.post('/save_uid', function(req, res){
+app.post('/update_poem/', function(req, res, next) {
+  var id = req.body.id;
+  console.log(id);
+  var title = req.body.updateTitle;
+  var poem = req.body.line0 + "\n" + req.body.line1 + "\n" + req.body.line2 + "\n" + req.body.line3;
+  console.log(title);
+  db.none('UPDATE poems SET name = $1, poem = $3 WHERE id = $2', [title, id, poem] )
+    .then(function() {
+      res.redirect('/saved/');
+    })
+    .catch(next);
+});
+
+app.post('/save_uid/', function(req, res){
   var user_id = req.body.uid;
   req.session.uid = user_id;
   console.log('SAVED UID', req.session.uid);
   res.json({status : "OK"})
 });
 
-app.get('/mypoems', function(req,res, next) {
+app.get('/mypoems/', function(req,res, next) {
   var id = req.session.uid;
   console.log('UID', id);
 
@@ -78,7 +91,7 @@ app.get('/mypoems', function(req,res, next) {
   .catch(next);
 });
 
-app.get('/poem', function(req, res, next) {
+app.get('/poem/', function(req, res, next) {
   var id = req.query.poem;
   console.log(id);
 
@@ -86,12 +99,31 @@ app.get('/poem', function(req, res, next) {
   .then(function(p) {
     console.log(p.poem);
     var poemSplit = p.poem.split('\n');
-    res.render('poem.hbs', {'poem': poemSplit, name: p.name});
+    res.render('poem.hbs', {'poem': poemSplit, 'name': p.name, 'id': id});
   })
   .catch(next);
 });
 
-app.get('/saved', function( req, res, next) {
+app.post('/delete/', function(req, res, next) {
+var id = req.body.id;
+console.log(id);
+  db.any('DELETE FROM poems WHERE id = $1', id)
+  .then(function() {
+    res.redirect('/mypoems/');
+  })
+  .catch(next);
+});
+// app.get('/allpoems/', function (req, res, next) {
+//   var id = req.session.uid;
+//
+//   db.any('SELECT * FROM poems WHERE user_id = $1', id)
+//   .then(function(poems) {
+//     res.render('allpoems.hbs', {'poems': poems});
+//   })
+//   .catch(next);
+// });
+
+app.get('/saved/', function( req, res, next) {
   res.render('saved.hbs');
 });
 
