@@ -21,12 +21,7 @@
 
     <div class="col s4 blue-grey-text lighten-3">
       <h5>
-        <div id="synonyms">
-          <ul>
-          {{#each}}
-            {{/each}}
-        </ul>
-        </div>
+        <div id="synonyms"></div>
         <div id="rhymes"></div>
       </h5>
     </div>
@@ -93,16 +88,16 @@ function getSynonyms() {
   .then(function (r) {
     console.log(r);
         document.getElementById("nouns").innerHTML = "Nouns: ";
-        document.getElementById("nounsHere").innerHTML = r.data[0].words;
+        document.getElementById("synonyms").innerHTML = r.data[0].words;
     })
   }
 function getRhymes() {
   var word = document.getElementById("word").value;
 
-  axios.get('http://words.bighugelabs.com/api/2/'+"{{key}}"+'/'+word+'/json')
+  axios.get('http://api.wordnik.com:80/v4/word.json/'+ word +'/relatedWords?useCanonical=false&relationshipTypes=rhyme&limitPerRelationshipType=10&api_key='+"{{key}}")
   .then(function (r) {
     console.log(r);
-    document.get
+    document.getElementById("rhymes").innerHTML = r.data[0].words;
   })
 }
 
