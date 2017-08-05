@@ -36,10 +36,23 @@ app.get('/tutorial/', function(req, res) {
   res.render('tutorial.hbs');
 });
 
+//big huge thesaurus api
+// app.get('/create/', function(req, res) {
+//   let secretKey = "efc9deef165ea63a44d6f9205e00faf1";
+//   res.render('create.hbs', {key: secretKey});
+// });
+
+//wordnik api
 app.get('/create/', function(req, res) {
-  let secretKey = "efc9deef165ea63a44d6f9205e00faf1";
+  let secretKey = "bb9ea069b0f1078b1600007e92e096555a5f94077056a0812";
   res.render('create.hbs', {key: secretKey});
 });
+
+// app.get('/layout/', function(req, res) {
+//   let secretKey = "bb9ea069b0f1078b1600007e92e096555a5f94077056a0812";
+//   res.render('layout.hbs', {key: secretKey});
+// });
+
 
 app.get('/about/', function(req, res) {
   res.render('about.hbs');

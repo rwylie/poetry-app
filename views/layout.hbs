@@ -36,16 +36,19 @@
           <div class="container">
             <div class="row">
               <div class="col l6 s12">
-                <h5 class="white-text">Footer Content</h5>
-                <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+                <h5 class="white-text">Word of the Day</h5>
+
+                <p id="wordOfTheDay" class="deep-orange-text accent-3 text-lighten-4"></p>
+                <p id="definition" class="white-text text-lighten-4"></p>
               </div>
               <div class="col l4 offset-l2 s12">
                 <h5 class="white-text">Poems</h5>
                 <ul>
-                  <li><a class="grey-text text-lighten-3" href="#!">Lyric</a></li>
+                  <p class="white-text">Coming Soon!</p>
+                  <!-- <li><a class="grey-text text-lighten-3" href="#!">Lyric</a></li>
                   <li><a class="grey-text text-lighten-3" href="#!">Narrative</a></li>
                   <li><a class="grey-text text-lighten-3" href="#!">Limerick</a></li>
-                  <li><a class="grey-text text-lighten-3" href="#!">Haiku</a></li>
+                  <li><a class="grey-text text-lighten-3" href="#!">Haiku</a></li> -->
                 </ul>
               </div>
             </div>
@@ -79,5 +82,18 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="/static/js/materialize.min.js"></script>
     <script type="text/javascript" src="/static/js/frontend.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+  function wordTest() {
+    axios.get('http://api.wordnik.com:80/v4/words.json/wordOfTheDay?api_key=bb9ea069b0f1078b1600007e92e096555a5f94077056a0812')
+    .then(function (word) {
+      console.log(word);
+      document.getElementById("wordOfTheDay").innerHTML = word.data.word;
+      document.getElementById("definition").innerHTML = word.data.examples[0].text;
+    })
+  }
+  wordTest();
+
+    </script>
   </body>
 </html>
