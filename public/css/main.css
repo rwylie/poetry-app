@@ -36,3 +36,17 @@
    a {
      color: #ffab91;
    }
+
+   html, body {
+       height: 100%;
+       margin: 0;
+       padding: 0;
+   }
+
+   .img-poem {
+       padding: 0;
+       display: block;
+       margin: 0 auto;
+       max-height: 100%;
+       max-width: 100%;
+   }

@@ -122,7 +122,7 @@ var id = req.body.id;
 console.log(id);
   db.any('DELETE FROM poems WHERE id = $1', id)
   .then(function() {
-    res.redirect('/mypoems/');
+    res.redirect('/deleted/');
   })
   .catch(next);
 });
@@ -139,6 +139,7 @@ console.log(id);
 app.get('/saved/', function( req, res, next) {
   res.render('saved.hbs');
 });
+
 
 
 var PORT = process.env.PORT || 9090;
