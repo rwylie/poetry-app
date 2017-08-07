@@ -12,16 +12,14 @@
         <div class="input-field inline">
           <input placeholder="Enter a Word" id="word" name="word" type="text">
         </div>
-        <button class="btn waves-effect waves-light deep-orange lighten-3" onclick="getSynonyms()"> Synonyns
-        </button>
-        <button class="btn waves-effect waves-light brown lighten-3" onclick=" getRhymes()"> Rhymes
-        </button>
+        <button class="btn waves-effect waves-light deep-orange lighten-3" onclick="getSynonyms()"> Synonyns</button>
+        <button class="btn waves-effect waves-light brown lighten-3" onclick=" getRhymes()"> Rhymes </button>
       </div>
   </div>
 
     <div class="col s4 blue-grey-text lighten-3">
              <p id='synonyms'></p>
-             <p id="rhymes"></p>  
+             <p id="rhymes"></p>
     </div>
 </div>
 
@@ -35,11 +33,11 @@
         <input name="uid" value="" id="uid" type="hidden">
         <div class="row">
 
-        <div class="col s4 blue-grey-text lighten-3">
+        <div class=" printcol s4 blue-grey-text lighten-3">
           <p>Poem by: </p><p id="poem-by"></p>
         </div>
 
-        <div class="col s4">
+        <div class="col s4 print">
           <div class="input-field white">
             <input id="createPoem1" type="text" name="title">
             <label for="title">Title</label>
@@ -76,9 +74,9 @@
         </div>
         <div class="row">
           <div class="col s6">
-            <button class="waves-effect waves-yellow deep-orange lighten-3 btn" type="submit"><i class="material-icons left">save</i>Save</button>
+            <button class="waves-effect waves-blue-grey green lighten-3 btn" type="submit"><i class="material-icons left">save</i>Save</button>
           </form>
-            <button class="waves-effect waves-yellow brown lighten-3 btn" onclick="window.print(); return false;"><i class="material-icons left">print</i>Print</a>
+            <button class="waves-effect waves-blue-grey deep-orange lighten-3 btn" onclick="window.print(); return false;"><i class="material-icons left">print</i>Print</a>
           </div>
         </div>
 </div>

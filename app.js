@@ -93,9 +93,11 @@ app.post('/save_uid/', function(req, res){
 });
 
 app.get('/mypoems/', function(req,res, next) {
-  var id = req.session.uid;
+  var id = req.session.uid || null;
   console.log('UID', id);
-
+  if(id === null ) {
+    res.redirect('/login/');
+  }
   db.any('SELECT * FROM poems WHERE user_id = $1', id)
   // db.any(`SELECT * FROM poems`)
   .then(function(poems) {
@@ -142,6 +144,10 @@ app.get('/saved/', function( req, res, next) {
 
 app.get('/oops/', function(req, res, next) {
   res.render('oops.hbs');
+});
+
+app.get('/login/', function(req, res, next) {
+  res.render('login.hbs');
 });
 
 
