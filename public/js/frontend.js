@@ -5,8 +5,15 @@ function auth () {
     firebase.auth().signInWithPopup(provider)
       .then(function (result) {
         User.user = result.user;
-        $.post( "/save_uid", {uid: result.user.uid});
-        resolve(User);
+        $.post( "/save_uid", {uid: result.user.uid})
+          .done(function () {
+            resolve(User);
+            var next_url = location.search;
+            if (next_url) {
+              next_url = next_url.split("=")[1];
+            }
+            location.href = next_url || "/";
+          });
       })
       .catch(function (e) {
         reject(e);
@@ -28,8 +35,10 @@ firebase.auth()
 function logout () {
   firebase.auth().signOut().then(function() {
     User = {};
+    $.post("/logout");
+    loggedOut();
   }, function(error) {
-    // An error happened.
+    console.log(error);
   });
 }
 
@@ -39,8 +48,15 @@ function loggedOut() {
 function poemBy() {
   if (User)
   {
-  document.getElementById('poem-by').innerHTML = User.user.displayName;
-  document.getElementById('uid').value = User.user.uid;
+    var poemby = document.getElementById('poem-by');
+    if (poemby) {
+      poemby.innerHTML = User.user.displayName;
+    }
+
+    var uid = document.getElementById('uid');
+    if (uid) {
+      uid.value = User.user.uid;
+    }
   }
 }
 $(document).ready(function(){
