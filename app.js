@@ -122,7 +122,7 @@ var id = req.body.id;
 console.log(id);
   db.any('DELETE FROM poems WHERE id = $1', id)
   .then(function() {
-    res.redirect('/deleted/');
+    res.render('deleted.hbs');
   })
   .catch(next);
 });
