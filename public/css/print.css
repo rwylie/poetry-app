@@ -1,0 +1,15 @@
+
+body {
+  font-family: 'Shadows Into Light', cursive;
+  font-size: 1em;
+  color: #333333;
+  margin-top: 2cm;
+  margin-right: 2cm;
+  margin-bottom: 1.5cm;
+  margin-left: 2cm;
+  visibility:hidden !important;
+}
+
+.print {visibility:visible !important;}
+/*body {display: none !important;}
+.print {visibility:visible !important;}*/

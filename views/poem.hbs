@@ -8,14 +8,15 @@
 </form>
 </div>
 </div>
-  <div class="row">
+  <div>
     <div class="col s12 center">
-      <div id="poemShow">
+      <div id="poemShow" class="print">
         <h2 class="blue-grey-text lighten-3">{{name}}</h2>
         <h5>  {{#each poem}}
          {{this}} <br>
           {{/each}}
         </h5>
+        <!-- <button class="waves-effect waves-yellow deep-orange lighten-3 btn"><i class="material-icons left">print</i>Print</a> -->
       </div>
 
       <div id="poemEdit" style="display:none">
@@ -35,3 +36,5 @@
     </div>
   </div>
 </div>
+
+<button class="waves-effect waves-yellow deep-orange lighten-3 btn" onclick="window.print(); return false;"><i class="material-icons left">print</i>Print</a>
