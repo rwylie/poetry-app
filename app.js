@@ -140,6 +140,10 @@ app.get('/saved/', function( req, res, next) {
   res.render('saved.hbs');
 });
 
+app.get('/oops/', function(req, res, next) {
+  res.render('oops.hbs');
+});
+
 
 
 var PORT = process.env.PORT || 9090;
