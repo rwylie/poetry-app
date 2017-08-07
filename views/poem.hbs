@@ -19,7 +19,7 @@
         <!-- <button class="waves-effect waves-yellow deep-orange lighten-3 btn"><i class="material-icons left">print</i>Print</a> -->
       </div>
 
-      <div id="poemEdit" style="display:none">
+      <div id="poemEdit" style="display:none" class="print">
         <form action="/update_poem/" method="POST">
           <h2><textarea class="textarea1 blue-grey-text lighten-3" name="updateTitle" value="{{name}}" style="height: 1.3em;">{{name}}</textarea></h2>
           <h5>{{#each poem}}
@@ -32,9 +32,11 @@
       </div>
 
         <br>
+      <div class="row">
         <button class="btn flat green lighten-3" id="e" value="{{id}}"><i class="large material-icons"> edit </i> Edit </button>
+        <button class="waves-effect waves-yellow deep-orange lighten-3 btn" onclick="window.print(); return false;"><i class="material-icons left">print</i>Print</a>
+        <br><br>
+      </div>
     </div>
   </div>
 </div>
-
-<button class="waves-effect waves-yellow deep-orange lighten-3 btn" onclick="window.print(); return false;"><i class="material-icons left">print</i>Print</a>
