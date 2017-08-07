@@ -61,6 +61,11 @@ app.get('/about/', function(req, res) {
 /**********POEMS***********/
 
 app.post('/add_poem/', function (req, res, next) {
+  var id = req.session.uid || null;
+  console.log('UID', id);
+  if(id === null ) {
+    res.redirect('/login/?next=/create/');
+  }
   var poem = req.body.createPoem1 + "\n" + req.body.createPoem2 + "\n" + req.body.createPoem3 + "\n" + req.body.createPoem4;
   var user_id = req.body.uid;
   req.session.uid = user_id;
