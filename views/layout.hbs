@@ -8,7 +8,7 @@
     <!--Import materialize.css-->
     <link type="text/css" rel="stylesheet" href="/static/css/materialize.min.css">
     <link type="text/css" rel="stylesheet" href="/static/css/main.css">
-    <link rel="stylesheet" href="static/css/print.css" type="text/css" media="print" />
+    <link rel="stylesheet" href="/static/css/print.css" type="text/css" media="print" />
 
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -19,6 +19,7 @@
       <nav>
       <div class="nav-wrapper green accent-1">
         <a href="/"><img src="/static/images/logo6.png"></a>
+         <a href="#" data-activates="slide-out" class="button-collapse right"><i class="material-icons white-text">menu</i></a>
         <ul class="right hide-on-med-and-down">
           <li><a href="/mypoems/" class="white-text">My Poems</a></li>
           <li><a href="/create/" class="white-text" onclick="poemBy()">Create</a></li>
@@ -28,29 +29,13 @@
       </div>
     </nav>
   </div>
-  <!--
-  <div class="nav-mobile">
-    <a class="btn-floating btn-large red">
-     <i class="material-icons">menu</i>
-   </a>
- </div>
+  <ul class="side-nav white button-collapse" id="slide-out">
+    <li><a style="color: #b9f6ca" href="/mypoems/">My Poems</a></li>
+    <li><a style="color: #b9f6ca" href="/create/">Create</a></li>
+    <li><a style="color: #b9f6ca" href="/about/">About</a></li>
+    <li><a style="color: #b9f6ca" href="javascript: void(0);" onclick="auth()">Login</a></li>
+</ul>
 
-  <ul id="slide-out" class="side-nav">
-   <li><div class="user-view">
-     <div class="background">
-       <img src="images/office.jpg">
-     </div>
-     <a href="#!user"><img class="circle" src="images/yuna.jpg"></a>
-     <a href="#!name"><span class="white-text name">John Doe</span></a>
-     <a href="#!email"><span class="white-text email">jdandturk@gmail.com</span></a>
-   </div></li>
-   <li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
-   <li><a href="#!">Second Link</a></li>
-   <li><div class="divider"></div></li>
-   <li><a class="subheader">Subheader</a></li>
-   <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
- </ul>
- <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a> -->
 
 
 {{{body}}}
