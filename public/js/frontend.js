@@ -71,8 +71,6 @@ $(document).ready(function(){
    });
     // Initialize collapse button
     $(".button-collapse").sideNav();
-    // Show sideNav
-    $('.button-collapse').sideNav('hide');
-   $('.button-collapse').sideNav('show');
+
 
 });
