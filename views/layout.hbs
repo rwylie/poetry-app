@@ -97,7 +97,7 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script>
   function wordTest() {
-    axios.get('http://api.wordnik.com:80/v4/words.json/wordOfTheDay?api_key=bb9ea069b0f1078b1600007e92e096555a5f94077056a0812')
+    axios.get('//api.wordnik.com/v4/words.json/wordOfTheDay?api_key=bb9ea069b0f1078b1600007e92e096555a5f94077056a0812')
     .then(function (word) {
       console.log(word);
       document.getElementById("wordOfTheDay").innerHTML = word.data.word;
