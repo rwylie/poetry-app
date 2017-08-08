@@ -21,6 +21,7 @@
 
       <div id="poemEdit" style="display:none" class="print">
         <form action="/update_poem/" method="POST">
+          <input name="lines" value="{{poem.length}}" type="hidden">
           <h2><textarea class="textarea1 blue-grey-text lighten-3" name="updateTitle" value="{{name}}" style="height: 1.3em;">{{name}}</textarea></h2>
           <h5>{{#each poem}}
                 <textarea class="textarea2" name="line{{@index}}" value="{{this}}"> {{this}} </textarea><br>

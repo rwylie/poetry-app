@@ -10,6 +10,7 @@ var pgp = require('pg-promise')({
   promiseLib: Promise
 });
 
+
 var db = pgp(process.env.DATABASE_URL || {
   host: "localhost",
   port: 5432,
@@ -66,7 +67,12 @@ app.post('/add_poem/', function (req, res, next) {
   if(id === null ) {
     res.redirect('/login/?next=/create/');
   }
-  var poem = req.body.createPoem1 + "\n" + req.body.createPoem2 + "\n" + req.body.createPoem3 + "\n" + req.body.createPoem4;
+  var poem = req.body.createPoem1 + "\n" + req.body.createPoem2 + "\n" + req.body.createPoem3 + "\n" + req.body.createPoem4 + "\n";
+//lines recieves the value of lines from the frontend, then changes string to a number with parseInt
+  var total_lines = parseInt(req.body.lines);
+  for (var i = 5; i <= total_lines; i++) {
+    poem += req.body['newline' + i] + "\n";
+  }
   var user_id = req.body.uid;
   req.session.uid = user_id;
   var title = req.body.title;
@@ -81,7 +87,12 @@ app.post('/update_poem/', function(req, res, next) {
   var id = req.body.id;
   console.log(id);
   var title = req.body.updateTitle;
-  var poem = req.body.line0 + "\n" + req.body.line1 + "\n" + req.body.line2 + "\n" + req.body.line3;
+  // var poem = req.body.line0 + "\n" + req.body.line1 + "\n" + req.body.line2 + "\n" + req.body.line3 + "\n";
+  var poem = '';
+  var total_lines = parseInt(req.body.lines);
+  for (var i = 0; i < total_lines; i++) {
+    poem += req.body['line' + i] + "\n"
+  }
   console.log(title);
   db.none('UPDATE poems SET name = $1, poem = $3 WHERE id = $2', [title, id, poem] )
     .then(function() {
@@ -123,7 +134,8 @@ app.get('/poem/', function(req, res, next) {
   db.one(`SELECT * FROM poems WHERE id = '${id}'`)
   .then(function(p) {
     console.log(p.poem);
-    var poemSplit = p.poem.split('\n');
+    var poemSplit = p.poem.split('\n').slice(0, -1);
+    console.log(poemSplit);
     res.render('poem.hbs', {'poem': poemSplit, 'name': p.name, 'id': id});
   })
   .catch(next);

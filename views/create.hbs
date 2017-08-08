@@ -13,6 +13,7 @@
           <input placeholder="Enter a Word" id="word" name="word" type="text">
         </div>
         <button class="btn waves-effect waves-light deep-orange lighten-3" onclick="getSynonyms()"> Synonyns</button>
+
         <button class="btn waves-effect waves-light brown lighten-3" onclick=" getRhymes()"> Rhymes </button>
       </div>
   </div>
@@ -31,6 +32,8 @@
 
       <form action="/add_poem" method="POST" class="col s12">
         <input name="uid" value="" id="uid" type="hidden">
+        <!-- lines updates the value when new lines are added and sends to back end the number of lines -->
+        <input name="lines" value="4" id="lines" type="hidden">
         <div class="row">
 
         <div class=" printcol s4 blue-grey-text lighten-3">
@@ -72,14 +75,25 @@
             <label for="createPoem4">Line 4</label>
           </div>
         </div>
+
+        <div id="new-lines">
+
+        </div>
+
         <div class="row">
-          <div class="col s6">
+          <div class="col s12">
             <button class="waves-effect waves-blue-grey green lighten-3 btn" type="submit"><i class="material-icons left">save</i>Save</button>
           </form>
-            <button class="waves-effect waves-blue-grey deep-orange lighten-3 btn" onclick="window.print(); return false;"><i class="material-icons left">print</i>Print</a>
+            <button class="waves-effect waves-blue-grey deep-orange lighten-3 btn" onclick="window.print(); return false;"><i class="material-icons left">print</i>Print</button>
           </div>
         </div>
-</div>
+        <div class="row">
+          <div class="col s12">
+            <button class="waves-effect waves-blue-grey blue-grey lighten-3 btn" onclick="newLine(), generatePoem2()"><i class="material-icons left">add</i>New Line </button>
+            <button class="waves-effect waves-blue-grey brown lighten-3 btn" onclick="deleteLine()"><i class="material-icons left">delete</i>Delete Line </button>
+          </div>
+        </div>
+      </div>
 
 
 
@@ -107,5 +121,22 @@ function getRhymes() {
     // document.getElementById("rhymes").innerHTML = rhymes.replace(/,/g, '<br>');
   })
 }
+var i = 4;
+function newLine() {
+  i += 1;
+  //var lines gets the value of lines from the html and updates the value every time a line is added
+  var lines = document.getElementById('lines').value = i;
+  $("#new-lines").append($(`<div class="row print remove-line${i}"><div class="input-field col s12"><input id="newline${i}" type="text" name="newline${i}"><label for="newline${i}">Line ${i}</label></div></div>`))
+}
+
+function deleteLine() {
+
+  $("#new-lines > div:last-child").remove();
+  if(i > 4) {
+  i -= 1;
+  }
+  var lines = document.getElementById('lines').value = i;
+}
+
 
   </script>
