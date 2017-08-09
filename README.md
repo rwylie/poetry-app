@@ -8,6 +8,10 @@
 
 Poetic play was created to inspire the world to write more poems. Do you need an inspiring place on the internet to create and store your poems?  Would you like a safe place to learn and share your poems with others? Are you a teacher looking for a way to motivate your students to learn about poetry?  Writing poems is for everyone, and Poetic Play is the place to learn, share, and grow.
 
+### Technologies used:
+
+![git icon](readme-imgs/git.png) Git | ![github icon](readme-imgs/github.png) GitHub | ![atom icon](readme-imgs/atom.png) Atom | ![trello icon](readme-imgs/trello.png) Trello | Slack
+
 ### MVP
 
 Users will be able to:
