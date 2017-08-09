@@ -10,7 +10,14 @@ Poetic play was created to inspire the world to write more poems. Do you need an
 
 ### Technologies used:
 
-Node.js | JavaScript | jQuery | HTML | CSS | Materialize | Postgres | Illustrator | Photoshop
+#### Front-End
+HTML5 | CSS3 | JavaScript |  Materialize
+
+#### Back-End
+PostgreSQL | Postico | Node.js | Express | Heroku
+
+#### Design
+Illustrator | Photoshop
 
 ### MVP
 
