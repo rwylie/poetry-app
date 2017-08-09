@@ -26,4 +26,18 @@ Users will be able to:
 * users can comment and rate poems
 * word of the day with buttons to see the definition or example
 
+#### Tasks
+
+- [x] Initial Layout in Node.js
+- [x] Setup Postgres Database
+- [x] Create Logo with Illustrator
+- [x] Create Poem, Edit, Delete, Print
+- [x] Add New Lines
+- [x] Deploy with Heroku
+- [ ] Clickable definition and example of word of the day
+- [ ] Examples of poems and tutorials
+- [ ] Video Lessons
+- [x] Login Page when user isn't logged in
+- [ ] Create a submit page to submit poems
+- [ ] Update Postgres to accept submitted poems
 
