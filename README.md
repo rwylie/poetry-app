@@ -10,7 +10,7 @@ Poetic play was created to inspire the world to write more poems. Do you need an
 
 ### Technologies used:
 
-![git icon](readme-imgs/git.png) Git | ![github icon](readme-imgs/github.png) GitHub | ![atom icon](readme-imgs/atom.png) Atom | ![trello icon](readme-imgs/trello.png) Trello | Slack
+Node.js | JavaScript | jQuery | HTML | CSS | Materialize | Postgres | Illustrator | Photoshop
 
 ### MVP
 
