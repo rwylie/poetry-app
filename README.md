@@ -47,3 +47,9 @@ Users will be able to:
 * Allowing user to log in with Google
 * Getting the frontend to hangout with and be nice to the backend (so much fun!)
 * Adding new lines to existing poems and having the new lines update when saved in Postgres
+* Creating a mobile menu with Materialize and mobile responsiveness with images
+
+![screen shot 2017-08-09 at 11 52 52 am](https://user-images.githubusercontent.com/13789291/29133525-5994655c-7cf9-11e7-9e65-d153145e21b7.png)
+
+* Creating a session to save the UID 
+* Using the API Wordnik (orginall was using the BIG HUGE Thesaurus API, but switched because Wordnik had more to offer)
