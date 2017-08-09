@@ -30,7 +30,7 @@ Users will be able to:
 
 - [x] Initial Layout in Node.js
 - [x] Setup Postgres Database
-- [x] Create Logo with Illustrator
+- [x] Create Logo and images with Illustrator and Photoshop
 - [x] Create Poem, Edit, Delete, Print
 - [x] Add New Lines
 - [x] Deploy with Heroku
@@ -41,3 +41,9 @@ Users will be able to:
 - [ ] Create a submit page to submit poems
 - [ ] Update Postgres to accept submitted poems
 
+### Challenges
+
+* Creating a login system with Firebase
+* Allowing user to log in with Google
+* Getting the frontend to hangout with and be nice to the backend (so much fun!)
+* Adding new lines to existing poems and having the new lines update when saved in Postgres
